@@ -9,3 +9,35 @@
     <h1>hola soy el modulo de finanzas</h1>
   </body>
 </html>
+<tr></tr>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Colaborador</th>
+      <th scope="col">Area</th>
+      <th scope="col">Fecha De Nacimiento</th>
+      <th scope="col">Salario Mensual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Beto</th>
+      <td>Mantenimiento</td>
+      <td>23/02/05</td>
+      <td>$1500</td>
+    </tr>
+    <tr>
+      <th scope="row">Oscar</th>
+      <td>Profesor</td>
+      <td>29/02/99</td>
+      <td>$5000</td>
+    </tr>
+    <tr>
+      <th scope="row">Cesar</th>
+      <td>Limpieza</td>
+      <td>99/01/44</td>
+      <td>$19999</td>
+    </tr>
+  </tbody>
+</table>
+
