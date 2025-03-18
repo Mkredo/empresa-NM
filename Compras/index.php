@@ -22,6 +22,8 @@
                 <li>Producto 1 - $100</li>
                 <li>Producto 2 - $150</li>
                 <li>Producto 3 - $200</li>
+                <li>Producto 4 - $250</li>
+                <li>Producto 5 - $300</li>
             </ul>
         </div>
     <?php
