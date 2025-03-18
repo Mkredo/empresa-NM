@@ -13,6 +13,7 @@
       h1{
         color: white;
       }
+      
     </style>
     
 </head>
@@ -100,7 +101,7 @@
 
         if ($result->num_rows > 0) {
           // Mostrar datos de cada fila
-          echo "<table border='1'>";
+          echo "<table border='1' padding ='20'>";
           echo "<tr>";
           echo "<td>ID</td>";
           echo "<td>Nombre</td>";
