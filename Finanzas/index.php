@@ -79,6 +79,52 @@
           </tr>
         </tbody>
       </table>
+      
+      <?php
+        $servername = "localhost"; // O la dirección de tu servidor MySQL
+        $username = "root";
+        $password = "";
+        $dbname = "fina";
+
+        // Crear conexión
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verificar conexión
+        if ($conn->connect_error) {
+          die("Conexión fallida: " . $conn->connect_error);
+        }
+
+        // Consulta SQL
+        $sql = "SELECT * FROM pagos";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          // Mostrar datos de cada fila
+          echo "<table border='1'>";
+          echo "<tr>";
+          echo "<td>ID</td>";
+          echo "<td>Nombre</td>";
+          echo "<td>Medida</td>";
+          echo "<td>Precio</td>";
+          echo "<td>Cantidad</td>";  
+          echo "</tr>";
+          while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>".$row["id"]."</td>";
+            echo "<td>".$row["nombre"]."</td>";
+            echo "<td>".$row["cantidad"]."</td>";
+            echo "<td>".$row["fecha"]."</td>";
+            echo "</tr>";
+          }
+          //while($row = $result->fetch_assoc()) {
+            //echo "ID: " . $row["id"]. " - Nombre: " . $row["nombre"]. " - Medida: " . $row["medida"]. " - Precio: " . $row["precio"]." - Cantidad: " . $row["cantidad"]."<br>";
+          //}
+        } else {
+          echo "0 resultados";
+        }
+
+
+?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
