@@ -104,16 +104,15 @@
           echo "<tr>";
           echo "<td>ID</td>";
           echo "<td>Nombre</td>";
-          echo "<td>Medida</td>";
-          echo "<td>Precio</td>";
-          echo "<td>Cantidad</td>";  
+          echo "<td>Cantidad</td>";
+          echo "<td>Fecha</td>";  
           echo "</tr>";
           while($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>".$row["id"]."</td>";
             echo "<td>".$row["nombre"]."</td>";
-            echo "<td>".$row["cantidad"]."</td>";
-            echo "<td>".$row["fecha"]."</td>";
+            echo "<td>".$row["Cantidad"]."</td>";
+            echo "<td>".$row["Fecha"]."</td>";
             echo "</tr>";
           }
           //while($row = $result->fetch_assoc()) {
