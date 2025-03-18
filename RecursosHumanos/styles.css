@@ -1,0 +1,10 @@
+body {
+    background-image: url(Recursos-Humanos.jpg.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border: 5px  ; 
+    margin: 0; 
+    padding: 0; 
+}
