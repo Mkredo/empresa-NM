@@ -16,7 +16,7 @@
 
   ?>
 
-  <div class="content text-center p-4">
+  <div class="container text-center p-4">
 
     <table class="table p-4">
       <thead class="thead-dark">
