@@ -36,36 +36,41 @@
     <link rel="stylesheet" href="styles.css">
     <h1>RECURSOS HUMANOS</h1>
   </body>
-</html>
-<tr></tr>
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Colaborador</th>
-      <th scope="col">Area</th>
-      <th scope="col">Fecha De Nacimiento</th>
-      <th scope="col">Salario Mensual</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Beto</th>
-      <td>Mantenimiento</td>
-      <td>23/02/05</td>
-      <td>$1500</td>
-    </tr>
-    <tr>
-      <th scope="row">Oscar</th>
-      <td>Profesor</td>
-      <td>29/02/99</td>
-      <td>$5000</td>
-    </tr>
-    <tr>
-      <th scope="row">Cesar</th>
-      <td>Limpieza</td>
-      <td>99/01/44</td>
-      <td>$19999</td>
-    </tr>
+  <?php
+  include 'conexion.php';
+
+  ?>
+
+  <div class="content text-center p-4">
+
+    <table class="table p-4">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre Usuario</th>
+          <th scope="col">NickName</th>
+          <th scope="col">Accciones</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <?php
+        foreach ($result as $key => $value) {
+        ?>
+          <tr>
+            <th scope="row"><?php echo $key + 1; ?></th>
+            <td><?php echo $value['nombre_usuario'] ?></td>
+            <td>O<?php echo $value['nickname'] ?></td>
+            <td>
+              <button type="button" class="btn btn-primary">EDITAR</button>
+              <button type="button" class="btn btn-danger">ELIMINAR</button>
+              <button type="button" class="btn btn-info">VER</button>
+            </td>
+          </tr>
+        <?php
+        }
+        ?>
+
   </tbody>
 </table>
 
