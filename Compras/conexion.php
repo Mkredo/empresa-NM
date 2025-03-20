@@ -22,5 +22,3 @@ $result = $conexion->query($consulta);
 while ($fila = $result->fetch_assoc()){
     echo " ID: " . $fila["id"] . "Nombre". $fila["nombre_usuario"] ."Nickname". $fila["nickname"] . "<br>";
 }
-
-echo $result; 

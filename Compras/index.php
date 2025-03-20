@@ -29,6 +29,9 @@
     <?php
     include 'conexion.php';
     ?>
+   <table> 
+    
+   </table> 
   </body>
 </html>
 
