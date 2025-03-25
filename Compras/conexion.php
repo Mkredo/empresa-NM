@@ -1,7 +1,4 @@
 <?php
-
-echo "Hola soy el archivo php";
-
 $servidor = "localhost";
 $usuario = "root";
 $password = "";
@@ -15,9 +12,9 @@ if ($conexion) {
 }
 
 
-$consulta = "select * from usuario";
+$consulta = "select * from compras";
 $result = $conexion->query($consulta);
 
 while ($fila = $result->fetch_assoc()) {
-    echo " ID: " . $fila["id"] . "Nombre" . $fila["nombre_usuario"] . "Nickname" . $fila["nickname"] . "<br>";
+    echo " ID: " . $fila["id"] . "Producto" . $fila["producto"] . "Precio" . $fila["precio"] . "Cantidad" . $fila["cantidad"] . "Fecha" . $fila["fecha"] . "Total" . $fila["total"] . "<br>";
 }
