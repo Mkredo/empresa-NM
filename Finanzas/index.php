@@ -79,7 +79,36 @@
             <td>O<?php echo $value['mododepago'] ?></td>
             <td>O<?php echo $value['referencia'] ?></td>
             <td>
-              <button type="button" class="btn btn-primary">EDITAR</button>
+              <button data-bs-toggle="modal" data-bs-target="#modalClientes" type="button" class="btn btn-success"<?php echo $value['id']; ?>>EDITAR</button>
+              <div class="modal fade" id="modalEditar<?php echo $value['id']; ?>" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Editar pago</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="editar.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" class="form-control" value="<?php echo $value['nombre']; ?>" required>
+                        <label for="nickname">Cantidad:</label>
+                        <input type="text" name="cantidad" class="form-control" value="<?php echo $value['cantidad']; ?>" required>
+                        <label for="nickname">Fecha:</label>
+                        <input type="text" name="fecha" class="form-control" value="<?php echo $value['fecha']; ?>" required>
+                        <label for="nickname">Modo de pago:</label>
+                        <input type="text" name="mododepago" class="form-control" value="<?php echo $value['mododepago']; ?>" required>
+                        <label for="nickname">Referencia:</label>
+                        <input type="text" name="referencia" class="form-control" value="<?php echo $value['referencia']; ?>" required>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                      </form>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <button type="button" class="btn btn-danger">ELIMINAR</button>
               <button type="button" class="btn btn-info">VER</button>
             </td>
