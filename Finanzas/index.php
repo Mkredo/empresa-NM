@@ -15,10 +15,12 @@
       }
       
     </style>
-    
+    <?php
+    include 'conexion.php';
+
+    ?>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Módulo de Finanzas</a>
         <button class="navbar-toggler" type="button"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -48,83 +50,78 @@
           
         </div>
       </nav>
-      <br><br><br>
-      <h1 class="display-4">Pagos</h1>
-      <table class="table table-dark">
-        <thead>
+
+<body>
+<div class="container text-center p-4">
+
+    
+
+    <table class="table table-dark">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre </th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Mode de pago</th>
+          <th scope="col">Referencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        foreach ($result as $key => $value) {
+        ?>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="row"><?php echo $key + 1; ?></th>
+            <td><?php echo $value['nombre'] ?></td>
+            <td>O<?php echo $value['cantidad'] ?></td>
+            <td>O<?php echo $value['fecha'] ?></td>
+            <td>O<?php echo $value['mododepago'] ?></td>
+            <td>O<?php echo $value['referencia'] ?></td>
+            <td>
+              <button type="button" class="btn btn-primary">EDITAR</button>
+              <button type="button" class="btn btn-danger">ELIMINAR</button>
+              <button type="button" class="btn btn-info">VER</button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+        <?php
+        }
+        ?>
+
+      </tbody>
+    </table>
+    <button data-bs-toggle="modal" data-bs-target="#modalClientes" type="button" class="btn btn-success">NUEVO PAGO</button>
+
+    <div class="modal fade" id="modalClientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ingresa Datos del Pago</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <label for="">Nombre:</label>
+            <input type="text" class="form-control">
+            <label for="">Cantidad:</label>
+            <input type="text" class="form-control">
+            <label for="">Fecha:</label>
+            <input type="text" class="form-control">
+            <label for="">Modo de pago:</label>
+            <input type="text" class="form-control">
+            <label for="">Referencia:</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Guardar Datos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
       
-      <?php
-        $servername = "localhost"; // O la dirección de tu servidor MySQL
-        $username = "root";
-        $password = "";
-        $dbname = "fina";
-
-        // Crear conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Verificar conexión
-        if ($conn->connect_error) {
-          die("Conexión fallida: " . $conn->connect_error);
-        }
-
-        // Consulta SQL
-        $sql = "SELECT * FROM pagos";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-          // Mostrar datos de cada fila
-          echo "<table border='1', padding ='20'>";
-          echo "<tr>";
-          echo "<td>ID</td>";
-          echo "<td>Nombre</td>";
-          echo "<td>Cantidad</td>";
-          echo "<td>Fecha</td>";  
-          echo "</tr>";
-          while($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>".$row["id"]."</td>";
-            echo "<td>".$row["nombre"]."</td>";
-            echo "<td>".$row["Cantidad"]."</td>";
-            echo "<td>".$row["Fecha"]."</td>";
-            echo "</tr>";
-          }
-          //while($row = $result->fetch_assoc()) {
-            //echo "ID: " . $row["id"]. " - Nombre: " . $row["nombre"]. " - Medida: " . $row["medida"]. " - Precio: " . $row["precio"]." - Cantidad: " . $row["cantidad"]."<br>";
-          //}
-        } else {
-          echo "0 resultados";
-        }
-
-
-?>
+      
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
