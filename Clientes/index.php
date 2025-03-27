@@ -37,7 +37,7 @@
           <tr>
             <th scope="row"><?php echo $key + 1; ?></th>
             <td><?php echo $value['nombre_usuario'] ?></td>
-            <td>O<?php echo $value['nickname'] ?></td>
+            <td><?php echo $value['nickname'] ?></td>
             <td>
               <button type="button" class="btn btn-primary">EDITAR</button>
               <button type="button" class="btn btn-danger">ELIMINAR</button>
@@ -58,15 +58,18 @@
             <h5 class="modal-title" id="exampleModalLabel">Ingresa Datos del Cliente</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <label for="">Nombre de Cliente</label>
-            <input type="text" class="form-control">
-            <label for="">Usuario Cliente</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Guardar Datos</button>
+          <div class="modal-body container-fluid">
+            <form action="insertardatos.php" method="POST">
+              <label for="">ID nombre_usuario</label>
+              <input type="text" id="id" name="id" class="form-control">
+              <label for="">Nombre de Usuario</label>
+              <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control">
+              <label for="">Nickname</label>
+              <input type="text" name="nickname" id="nickname" class="form-control">
+              <button type="button" class="btn btn-secondary mt-5" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary mt-5">Guardar Datos</button>
+            </form>
+
           </div>
         </div>
       </div>
