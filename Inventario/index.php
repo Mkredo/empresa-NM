@@ -24,7 +24,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">producto</th>
-          <th scope="col">stock</th>
+          <th scope="col">Stock</th>
           <th scope="col">Accciones</th>
         </tr>
       </thead>
@@ -55,17 +55,18 @@
             <h5 class="modal-title" id="exampleModalLabel">Ingresa Datos del producto</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body container-fluid">
+          <form action="insertardatos.php" method="POST">
           <label for="">ID</label>
-          <input type="text" class="form-control">
+          <input type="text" ID= "ID" name="ID" class="form-control">
             <label for="">Nombre de producto</label>
-            <input type="text" class="form-control">
+            <input type="text" name="producto" id="producto" class="form-control">
             <label for="">stock</label>
-            <input type="text" class="form-control">
+            <input type="text" name="Stock" id="Stock" class="form-control">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Guardar Datos</button>
+            <button type="button" class="btn btn-secondary mt-5" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary mt-5">Guardar Datos</button>
           </div>
         </div>
       </div>
