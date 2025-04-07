@@ -11,10 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha = $_POST['fecha'];
     $total = $_POST['total'];
 
-    $sql = "INSERT INTO usuario VALUES ($id,'$producto', '$precio', '$cantidad', '$fecha', '$total')";
+    $sql = "INSERT INTO compras VALUES ($id,'$producto', '$precio', '$cantidad', '$fecha', '$total')";
+    // $sql = "INSERT INTO compras VALUES ($id,'$producto', '$precio', '$cantidad', '$fecha', '$total')";
     if ($conexion->query($sql) === TRUE) {
-        header("Location: http://localhost:8080/empresa-Nm/clientes/");
+        header("Location: http://localhost:8080/empresa-Nm/compras/");
     } else {
-        echo "<p class='alert alert-danger'>Error: " . $conn->error . "</p>";
+        echo "<p class='alert alert-danger'>Error: " . $conexion->error . "</p>";
     }
 }
+?>
