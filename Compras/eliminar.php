@@ -2,6 +2,7 @@
 
 include 'conexion.php';
 
+// Verificar si se ha enviado el ID del registro a eliminar
 // Verifica si se recibió el ID por GET
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
