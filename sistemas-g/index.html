@@ -1,153 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modulo de sistemas </title>
-    
-  </head>
-  <style type="text/css">
-    background-image
-    table, th, td{
-      border: 1px solid black;
-      border-collapse: collapse;
-      width: 70%;
-    }
-    th, td{
-      padding: 10px;
-      text-align: left;
-    }
-    th{
-      
-      border-color: #007bff;
-      color: #070707;
-    }
-    th{
-      background-color: #e05e5e;
-    }
-    tr{
-      background-color: hsl(19, 67%, 56%);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <title>Modulo de Compras</title>
+</head>
 
-    }
-    
+<body>
+  <h1 class="text-center">Modulo de sistemas</h1>
+  <div class="Seccion"></div>
+  <?php
+  include 'conexion.php';
+
+  ?>
+
+  <div class="container text-center p-4">
+
+    <button data-bs-toggle="modal" data-bs-target="#modalsistemas" type="button" class="btn btn-success">NUEVO PRODUCTO</button>
+
+    <table class="table p-4 mt-4">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">descripcion</th>
+          <th scope="col">ocupante</th>
+          <th scope="col">departamento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+         foreach ($result as $key => $value) {
+
+        ?>
+          <tr>
+            <th scope="row"><?php echo $key + 1; ?></th>
+            <td><?php echo $value['descripcion] ?></td>
+            <td><?php echo $value['ocupante'] ?></td>
+            <td><?php echo $value['departamento'] ?></td>
+            <td>       
+
+              <!-- Botón EDITAR -->
+<button 
+    class="btn btn-warning editarBtn" 
+    data-id="<?php echo $fila['id']; ?>"
+    data-producto="<?php echo $fila['descripcion']; ?>"
+    data-precio="<?php echo $fila['ocupante']; ?>"
+    data-cantidad="<?php echo $fila['departamento']; ?>"
+    data-bs-toggle="modal" 
+    data-bs-target="#modalEditar">
+    EDITAR
+</button>
+              <!-- editar datos -->
+  <script>
+  // Detectar click en el botón de editar
+  document.querySelectorAll('.editarBtn').forEach(button => {
+    button.addEventListener('click', function() {
+      document.getElementById('edit-id').value = this.dataset.id;
+      document.getElementById('edit-descripcion').value = this.dataset.descripcion;
+      document.getElementById('edit-ocupante').value = this.dataset.ocupante;
+      document.getElementById('edit-departamento').value = this.dataset.departamento;
+    });
+  });
+</script>
 
 
-  </style>
-  
-  <body>
-    <link rel="stylesheet" href="style.css">
-    <h1>Bienvenido al Área de Sistemas</h1>
-    <h1>Tabla de Equipos de Cómputo</h1>
-    
-    <table>
-      <thead>
+               <!-- EDITAR -->
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="editar.php" method="POST" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar descripcion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+          <div class="modal-body container-fluid">
+          <form action="editar.php" method="POST">
+            <label for="">id </label>     
+            <input type="number" name= "id" name="edit-id" class="form-control">                           
+            <label for="">descripcion</label>
+            <input type="text" name="descripcion" id="edit-descripcion" class="form-control">
+            <label for="">ocupante</label>
+            <input type="number" name="ocupante" id="edit-ocupante" class="form-control">
+            <label for="">departamento</label>
+            <input type="number" name="departamento" id="edit-departamento" class="form-control">
+            </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+               <button type="submit" class="btn btn-primary">Actualizar</button>
+             </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+            </td>
+          </tr>
+        <?php
         
-        <thead>
-            <tr>
-                <th>Equipo</th>
-                <th>Descripción</th>
-                <th>Ocupante</th>
-                <th>Departamento</th>
-                <th>Ubicación</th>
-                <th>Estado</th>
-                <th>Fecha de Adquisición</th>
-                <th>Fecha de Mantenimiento</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>PC-001</td>
-                <td>Estación de trabajo de diseño gráfico</td>
-                <td>Juan Pérez</td>
-                <td>finanzas</td>
-                <td>Oficina 101</td>
-                <td>Activo</td>
-                <td>2020-01-01</td>
-                <td>2022-06-01</td>
-            </tr>
-            <tr>
-                <td>PC-002</td>
-                <td>Estación de trabajo de desarrollo de software</td>
-                <td>María García</td>
-                <td>Recursos Humanos</td>
-                <td>Oficina 202</td>
-                <td>Activo</td>
-                <td>2019-06-01</td>
-                <td>2022-03-01</td>
-            </tr>
-            <tr>
-                <td>PC-003</td>
-                <td>Estación de trabajo de análisis de datos</td>
-                <td>Carlos López</td>
-                <td>Compras</td>
-                <td>Oficina 303</td>
-                <td>Activo</td>
-                <td>2020-06-01</td>
-                <td>2022-09-01</td>
-            </tr>
-            <tr>
-                <td>PC-004</td>
-                <td>Servidor de bases de datos</td>
-                <td>-</td>
-                <td>sistemas</td>
-                <td>Sala de servidores</td>
-                <td>Activo</td>
-                <td>2018-01-01</td>
-                <td>2022-01-01</td>
-            </tr>
-            <tr>
-                <td>PC-005</td>
-                <td>Estación de trabajo de soporte técnico</td>
-                <td>Ana Rodríguez</td>
-                <td>finanzas</td>
-                <td>Oficina 404</td>
-                <td>Activo</td>
-                <td>2020-03-01</td>
-                <td>2022-06-01</td>
-            </tr>
-            <tr>
-                <td>Laptop-001</td>
-                <td>Portátil para trabajo en campo</td>
-                <td>Pedro Martínez</td>
-                <td>compras</td>
-                <td>-</td>
-                <td>Activo</td>
-                <td>2020-09-01</td>
-                <td>2022-03-01</td>
-            </tr>
-            <tr>
-                <td>Laptop-002</td>
-                <td>Portátil para trabajo en campo</td>
-                <td>Sofía Gómez</td>
-                <td>Recursos Humanos/td>
-                <td>-</td>
-                <td>Activo</td>
-                <td>2020-12-01</td>
-                <td>2022-06-01</td>
-            </tr>
-            <tr>
-                <td>Tablet-001</td>
-                <td>Tableta para presentaciones</td>
-                <td>Juan Carlos</td>
-                <td>finanzass</td>
-                <td>-</td>
-                <td>Activo</td>
-                <td>2020-06-01</td>
-                <td>2022-03-01</td>
-            </tr>
-            <tr>
-                
-    <header>
-  </header>
-  <main>
-      <video></video>
-  </main>
-  <footer>
-      
+        ?>
+          <tr>
+            <th scope="row"><?php echo $key + 1; ?></th>
+            <td><?php echo $value['descripcion'] ?></td>
+            <td><?php echo $value['ocupante'] ?></td>
+            <td><?php echo $value['departamento'] ?></td>
+          </tr>
+        <?php 
+        }
+        ?>
+        
 
-  </footer>
-    
-  
+      </tbody>
+    </table>
 
-  </body>
-</html> 
+    <div class="modal fade" id="modalCompras" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ingresa descripcion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body container-fluid">
+          <form action="insertardatos.php" method="POST">
+            <label for="">id </label>     
+            <input type="number" id= "id" name="id" class="form-control">                           
+            <label for="">descripcion</label>
+            <input type="text" name="descripcion" id="descripcion" class="form-control">
+            <label for="">ocupante</label>
+            <input type="number" name="ocupante" id="ocupante" class="form-control">
+            <label for="">departamento</label>
+            <input type="number" name="departamento" id="departamento" class="form-control">
+            <button type="button" class="btn btn-secondary mt-5" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary mt-5">Guardar Datos</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
