@@ -74,13 +74,13 @@
           <tr>
             <th scope="row"><?php echo $key + 1; ?></th>
             <td><?php echo $value['nombre'] ?></td>
-            <td>O<?php echo $value['cantidad'] ?></td>
-            <td>O<?php echo $value['fecha'] ?></td>
-            <td>O<?php echo $value['mododepago'] ?></td>
-            <td>O<?php echo $value['referencia'] ?></td>
+            <td><?php echo $value['cantidad'] ?></td>
+            <td><?php echo $value['fecha'] ?></td>
+            <td><?php echo $value['mododepago'] ?></td>
+            <td><?php echo $value['referencia'] ?></td>
             <td>
-              <button data-bs-toggle="modal" data-bs-target="#modalClientes" type="button" class="btn btn-success"<?php echo $value['id']; ?>>EDITAR</button>
-              <div class="modal fade" id="modalEditar<?php echo $value['id']; ?>" tabindex="-1" aria-hidden="true">
+              <button data-bs-toggle="modal" data-bs-target="#modalEditar" type="button" class="btn btn-success"<?php echo $value['id']; ?>>EDITAR</button>
+              <div class="modal fade" id="modalEditar"<?php echo $value['id']; ?> tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -88,7 +88,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                      <form action="editar.php" method="POST">
+                      <form action="modificardatos.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" class="form-control" value="<?php echo $value['nombre']; ?>" required>
@@ -102,14 +102,26 @@
                         <input type="text" name="referencia" class="form-control" value="<?php echo $value['referencia']; ?>" required>
                     </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                      <button type="submit" class="btn btn-primary">Guardar </button>
                       </form>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
-              <button type="button" class="btn btn-danger">ELIMINAR</button>
+              <button data-bs-toggle="modal" data-bs-target="#modalBorrar" type="button" class="btn btn-danger"<?php echo $value['id']; ?>>ELIMINAR</button>
+              <div class="modal fade" id="modalBorrar"<?php echo $value['id']; ?> tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">¿Seguro que quieres borrar?</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="modificardatos.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
+                      </form>
+                    </div>
               <button type="button" class="btn btn-info">VER</button>
             </td>
           </tr>
@@ -129,21 +141,26 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <form action="insertardatos.php" method="POST">
+            <label for="">ID:</label>
+            <input type="text" id="id"class="form-control" name="id">
             <label for="">Nombre:</label>
-            <input type="text" class="form-control">
+            <input type="text" id="nombre"class="form-control" name="nombre">
             <label for="">Cantidad:</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="cantidad" name="cantidad">
             <label for="">Fecha:</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="fecha" name="fecha">
             <label for="">Modo de pago:</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="mododepago" name="mododepago">
             <label for="">Referencia:</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="referencia" name="referencia">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Guardar Datos</button>
+            <button type="submit" class="btn btn-primary">Guardar Datos</button>
           </div>
+            </form>
+            
         </div>
       </div>
     </div>
